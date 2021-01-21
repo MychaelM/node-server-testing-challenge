@@ -1,8 +1,11 @@
 const express = require("express")
+const pokemonRouter = require('./pokemon/pokemon-router')
 
 const server = express();
 
 server.use(express.json())
+
+server.use("/pokemon", pokemonRouter)
 
 server.get("/", (req, res, next) => {
   res.json({
