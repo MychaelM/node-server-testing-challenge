@@ -11,4 +11,14 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    const pokemon = await Pokemon.findById(req.params.id)
+
+    res.status(200).json(pokemon)
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router
