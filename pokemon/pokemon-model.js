@@ -19,8 +19,15 @@ async function add(data) {
   return findById(data.id)
 }
 
+function remove(id) {
+  // console.log(id)
+  const newPokemon = pokemon;
+  return newPokemon.filter((pokemon) => pokemon.id !== Number(id));
+}
+
 module.exports = {
   find,
   findById,
   add,
+  remove,
 }

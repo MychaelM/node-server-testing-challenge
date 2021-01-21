@@ -35,4 +35,13 @@ describe("pokemon integration tests", () => {
     expect(res.body[0].name).toBe("sandslash")
     expect(res.body[0].type).toBe("ground")
   })
+
+  it("deletes a pokemon", async () => {
+    const res = await supertest(server).delete("/pokemon/1")
+    const res2 = await supertest(server).get("/pokemon/1")
+    console.log(res2)
+
+    expect(res.statusCode).toBe(204)
+    expect(res.body).toEqual({})
+  })
 })
