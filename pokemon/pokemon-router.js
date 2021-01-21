@@ -21,4 +21,13 @@ router.get("/:id", async (req, res, next) => {
   }
 })
 
+router.post("/", async (req, res, next) => {
+  try {
+    const pokemon = await Pokemon.add(req.body)
+    res.status(201).json(pokemon)
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router
